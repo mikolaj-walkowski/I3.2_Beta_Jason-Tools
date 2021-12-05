@@ -15,8 +15,9 @@
     <artifactId>io-project-architecture</artifactId>
     <version>0.1</version>
 
-	<properties>
+    <properties>
         <java.version>11</java.version>
+	<jackson.version>2.12.4</jackson.version>
     </properties>
 
     
@@ -53,6 +54,23 @@
             <artifactId>slf4j-api</artifactId>
             <version>1.7.25</version>
         </dependency>
+	    
+	<dependency>
+    		<groupId>com.fasterxml.jackson.core</groupId>
+    		<artifactId>jackson-core</artifactId>
+    		<version>${jackson.version.core}</version>
+	</dependency>
+	<dependency>
+  		<groupId>com.fasterxml.jackson.core</groupId>
+  		<artifactId>jackson-annotations</artifactId>
+  		<version>${jackson-annotations-version}</version>
+	</dependency>
+	<dependency>
+    		<groupId>com.fasterxml.jackson.core</groupId>
+    		<artifactId>jackson-databind</artifactId>
+    		<version>${jackson.version}</version>
+  	</dependency>
+
     </dependencies>
 
 
