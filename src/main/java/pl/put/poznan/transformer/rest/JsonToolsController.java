@@ -2,7 +2,7 @@ package pl.put.poznan.transformer.rest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
-import pl.put.poznan.transformer.logic.JsonInterpreter;
+import pl.put.poznan.transformer.logic.*;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -43,7 +43,8 @@ public class JsonToolsController {
         JsonInterpreter out;
         if(Objects.equals(format,"beautiful")){
             out = new JsonBeautiful(text);
-        }else if(Objects.equals(format,"oneLine")){
+        }else //if(Objects.equals(format,"oneLine")){
+        {
             out = new JsonOneLine(text);
         }
         out = new JsonFilter(out,filters);
