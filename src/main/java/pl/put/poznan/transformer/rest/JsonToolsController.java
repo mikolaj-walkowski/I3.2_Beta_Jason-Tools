@@ -50,12 +50,12 @@ public class JsonToolsController {
         return out.show();
     }
 
-    @GetMapping("/filter/{text}")
+    @GetMapping("/beautiful/{text}")
     public String beautiful(@PathVariable String text) {
         // log the parameters
         //logger.debug(text);
         //logger.debug(Arrays.toString(transforms));
-        JsonInterpreter out = new JsonOneLine(text);
+        JsonInterpreter out = new JsonBeautiful(text);
         return out.show();
     }
 }
