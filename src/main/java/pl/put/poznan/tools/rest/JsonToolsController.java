@@ -1,16 +1,12 @@
-package pl.put.poznan.transformer.rest;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+package pl.put.poznan.tools.rest;
 import org.springframework.web.bind.annotation.*;
-import pl.put.poznan.transformer.logic.JsonInterpreter;
+import pl.put.poznan.tools.logic.JsonInterpreter;
 
-import java.util.Arrays;
 import java.util.Objects;
-
 
 @RestController
 public class JsonToolsController {
-
+  
     //private static final Logger logger = LoggerFactory.getLogger(JsonToolsController.class);
     @GetMapping("/filterOut/{text}")
     public String filterOut(@PathVariable String text,@RequestParam(value="filters", defaultValue="") String[] filters, @RequestParam(value="format", defaultValue="beautiful") String format) {
@@ -26,8 +22,9 @@ public class JsonToolsController {
         out = new JsonFilterOut(out,filters);
         return out.show();
     }
+
     @GetMapping("/oneLine/{text}")
-    public String filterOut(@PathVariable String text) {
+    public String oneLine(@PathVariable String text) {
         // log the parameters
         //logger.debug(text);
         //logger.debug(Arrays.toString(transforms));
