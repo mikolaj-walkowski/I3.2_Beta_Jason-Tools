@@ -35,6 +35,29 @@ public class JsonToolsController {
         return out.show();
     }
 
+    @GetMapping("/filter/{text}")
+    public String filter(@PathVariable String text,@RequestParam(value="filters", defaultValue="") String[] filters, @RequestParam(value="format", defaultValue="beautiful") String format) {
+        // log the parameters
+        //logger.debug(text);
+        //logger.debug(Arrays.toString(transforms));
+        JsonInterpreter out;
+        if(Objects.equals(format,"beautiful")){
+            out = new JsonBeautiful(text);
+        }else if(Objects.equals(format,"oneLine")){
+            out = new JsonOneLine(text);
+        }
+        out = new JsonFilter(out,filters);
+        return out.show();
+    }
+
+    @GetMapping("/filter/{text}")
+    public String beautiful(@PathVariable String text) {
+        // log the parameters
+        //logger.debug(text);
+        //logger.debug(Arrays.toString(transforms));
+        JsonInterpreter out = new JsonOneLine(text);
+        return out.show();
+    }
 }
 
 
