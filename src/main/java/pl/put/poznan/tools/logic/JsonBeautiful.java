@@ -1,10 +1,10 @@
-package pl.put.poznan.transformer.logic;
+package pl.put.poznan.tools.logic;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class JsonBeautiful extends JsonInterpreter{
+public class JsonBeautiful extends JsonInterpreter {
 
     private JsonNode obj;
     private ObjectMapper mapper;
