@@ -1,11 +1,18 @@
-package pl.put.poznan.transformer.logic;
+package pl.put.poznan.tools.logic;
 
-public class JsonOneLine extends JsonInterpreter{
-    public JsonOneLine(String text) {
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+public class JsonOneLine extends JsonInterpreter {
+
+    public JsonOneLine(String text) throws JsonProcessingException {
+        super(text);
     }
 
     @Override
-    public String show() {
-        return null;
+    public String show() throws JsonProcessingException {
+        String json = new ObjectMapper().writeValueAsString(getJsonNode());
+        return json;
     }
 }
