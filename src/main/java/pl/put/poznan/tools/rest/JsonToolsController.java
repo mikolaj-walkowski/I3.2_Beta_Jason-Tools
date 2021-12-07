@@ -3,7 +3,7 @@ package pl.put.poznan.tools.rest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
-import pl.put.poznan.tools.logic.JsonInterpreter;
+import pl.put.poznan.tools.logic.*;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -97,5 +97,3 @@ public class JsonToolsController {
         return out.show();
     }
 }
-
-
