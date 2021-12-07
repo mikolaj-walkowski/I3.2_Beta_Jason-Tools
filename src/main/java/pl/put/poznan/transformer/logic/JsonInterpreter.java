@@ -1,18 +1,34 @@
 package pl.put.poznan.transformer.logic;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * This is just an example to show that the logic should be outside the REST service.
  */
-public class JsonInterpreter {
+public abstract class JsonInterpreter {
 
-    private final String transforms;
+    private JsonNode obj;
+    private ObjectMapper mapper;
 
-    public JsonInterpreter(String transforms){
-        this.transforms = transforms;
+    public JsonInterpreter(){}
+    public JsonInterpreter(String json){
+        try {
+            this.mapper = new ObjectMapper();
+            obj = mapper.readTree(json);
+        }catch (JsonProcessingException e){
+            System.out.println(e);
+        }
     }
 
-    public String transform(String text){
-        // of course, normally it would do something based on the transforms
-        return text.toUpperCase();
+//    public JsonInterpreter(){}
+    public JsonNode getJsonNode(){
+        return obj;
     }
+    public void setJsonNode(JsonNode obj){
+        this.obj = obj;
+    }
+
+    abstract public String show() throws JsonProcessingException;
+
 }
