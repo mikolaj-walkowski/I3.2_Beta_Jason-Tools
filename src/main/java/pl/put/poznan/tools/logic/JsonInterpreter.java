@@ -15,13 +15,12 @@ public abstract class JsonInterpreter {
     public JsonInterpreter(String json){
         try {
             this.mapper = new ObjectMapper();
-            obj = mapper.readTree(json);
+            this.obj = mapper.readTree(json);
         }catch (JsonProcessingException e){
             System.out.println(e);
         }
     }
 
-//    public JsonInterpreter(){}
     public JsonNode getJsonNode(){
         return obj;
     }

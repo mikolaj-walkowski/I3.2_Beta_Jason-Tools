@@ -9,8 +9,8 @@ public class JsonBeautiful extends JsonInterpreter {
     private JsonNode obj;
     private ObjectMapper mapper;
 
-    public JsonBeautiful(String obj) {
-        super();
+    public JsonBeautiful(String json) {
+        super(json);
     }
 
     @Override
