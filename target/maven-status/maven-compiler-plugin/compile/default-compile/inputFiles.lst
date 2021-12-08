@@ -1,3 +1,7 @@
-/Users/mochodek/Documents/Dydaktyka/Wyklady/IO/Laboratory classes/projekt/ioprojectarchitecture/src/main/java/pl/put/poznan/transformer/app/TextTransformerApplication.java
-/Users/mochodek/Documents/Dydaktyka/Wyklady/IO/Laboratory classes/projekt/ioprojectarchitecture/src/main/java/pl/put/poznan/transformer/logic/TextTransformer.java
-/Users/mochodek/Documents/Dydaktyka/Wyklady/IO/Laboratory classes/projekt/ioprojectarchitecture/src/main/java/pl/put/poznan/transformer/rest/TextTransformerController.java
+F:\Studia\I3.2_Beta_Jason-Tools\src\main\java\pl\put\poznan\tools\app\JsonToolsApplication.java
+F:\Studia\I3.2_Beta_Jason-Tools\src\main\java\pl\put\poznan\tools\logic\JsonFilterOut.java
+F:\Studia\I3.2_Beta_Jason-Tools\src\main\java\pl\put\poznan\tools\rest\JsonToolsController.java
+F:\Studia\I3.2_Beta_Jason-Tools\src\main\java\pl\put\poznan\tools\logic\JsonFilter.java
+F:\Studia\I3.2_Beta_Jason-Tools\src\main\java\pl\put\poznan\tools\logic\JsonInterpreter.java
+F:\Studia\I3.2_Beta_Jason-Tools\src\main\java\pl\put\poznan\tools\logic\JsonBeautiful.java
+F:\Studia\I3.2_Beta_Jason-Tools\src\main\java\pl\put\poznan\tools\logic\JsonOneLine.java

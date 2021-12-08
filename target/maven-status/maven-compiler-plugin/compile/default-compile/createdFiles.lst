@@ -1,1 +1,7 @@
-pl\put\poznan\transformer\app\JsonToolsApplication.class
+pl\put\poznan\tools\app\JsonToolsApplication.class
+pl\put\poznan\tools\logic\JsonOneLine.class
+pl\put\poznan\tools\logic\JsonFilterOut.class
+pl\put\poznan\tools\rest\JsonToolsController.class
+pl\put\poznan\tools\logic\JsonInterpreter.class
+pl\put\poznan\tools\logic\JsonBeautiful.class
+pl\put\poznan\tools\logic\JsonFilter.class

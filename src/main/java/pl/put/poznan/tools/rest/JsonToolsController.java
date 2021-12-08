@@ -1,5 +1,6 @@
 package pl.put.poznan.tools.rest;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +24,7 @@ public class JsonToolsController {
      * @return String zawierający wynikowy Json
      */
     @GetMapping("/filterOut/{text}")
-    public String filterOut(@PathVariable String text, @RequestParam(value = "filters", defaultValue = "") String[] filters, @RequestParam(value = "format", defaultValue = "beautiful") String format) {
+    public String filterOut(@PathVariable String text, @RequestParam(value = "filters", defaultValue = "") String[] filters, @RequestParam(value = "format", defaultValue = "beautiful") String format) throws JsonProcessingException {
         // log the parameters
         //logger.debug(text);
         //logger.debug(Arrays.toString(transforms));
@@ -47,7 +48,7 @@ public class JsonToolsController {
      * @return String zawierający wynikowy Json
      */
     @GetMapping("/oneLine/{text}")
-    public String filterOut(@PathVariable String text) {
+    public String filterOut(@PathVariable String text) throws JsonProcessingException {
         // log the parameters
         //logger.debug(text);
         //logger.debug(Arrays.toString(transforms));
@@ -74,13 +75,17 @@ public class JsonToolsController {
                 out = new JsonBeautiful(text);
             } else if (Objects.equals(format, "oneLine")) {
                 out = new JsonOneLine(text);
-            }
+            } else throw new Exception();
         } catch (Exception e) {
             return "Nieobsługiwany format";
         }
 
-        out = new JsonFilter(out, filters);
-        return out.show();
+        try {
+            out = new JsonFilter(out, filters);
+            return out.show();
+        } catch (Exception e){
+            return "Błąd wykonania funkcji show()";
+        }
     }
 
     /**
@@ -94,6 +99,10 @@ public class JsonToolsController {
         //logger.debug(text);
         //logger.debug(Arrays.toString(transforms));
         JsonInterpreter out = new JsonBeautiful(text);
-        return out.show();
+        try {
+            return out.show();
+        } catch (Exception e){
+            return "Błąd wykonania funkcji show()";
+        }
     }
 }
