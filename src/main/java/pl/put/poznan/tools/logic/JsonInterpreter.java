@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
- * This is just an example to show that the logic should be outside the REST service.
+ * Klasa abstrakcyjna interpreterów JSON
  */
 public abstract class JsonInterpreter {
 
