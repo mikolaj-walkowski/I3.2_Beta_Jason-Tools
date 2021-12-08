@@ -65,23 +65,27 @@ public class JsonToolsController {
      * @return          String z zawartością wynikowego pliku Json
      */
     @GetMapping("/filter/{text}")
-    public String filter(@PathVariable String text, @RequestParam(value = "filters", defaultValue = "") String[] filters, @RequestParam(value = "format", defaultValue = "beautiful") String format) throws JsonProcessingException {
+    public String filter(@PathVariable String text, @RequestParam(value = "filters", defaultValue = "") String[] filters, @RequestParam(value = "format", defaultValue = "beautiful") String format) {
         // log the parameters
         //logger.debug(text);
         //logger.debug(Arrays.toString(transforms));
-        JsonInterpreter out = null;
+        JsonInterpreter out;
         try {
             if (Objects.equals(format, "beautiful")) {
                 out = new JsonBeautiful(text);
             } else if (Objects.equals(format, "oneLine")) {
                 out = new JsonOneLine(text);
-            }
+            } else throw new Exception();
         } catch (Exception e) {
             return "Nieobsługiwany format";
         }
 
-        out = new JsonFilter(out, filters);
-        return out.show();
+        try {
+            out = new JsonFilter(out, filters);
+            return out.show();
+        } catch (Exception e){
+            return "Błąd wykonania funkcji show()";
+        }
     }
 
     /**
@@ -90,11 +94,15 @@ public class JsonToolsController {
      * @return          String z zawartością wynikowego pliku Json
      */
     @GetMapping("/beautiful/{text}")
-    public String beautiful(@PathVariable String text) throws JsonProcessingException {
+    public String beautiful(@PathVariable String text) {
         // log the parameters
         //logger.debug(text);
         //logger.debug(Arrays.toString(transforms));
         JsonInterpreter out = new JsonBeautiful(text);
-        return out.show();
+        try {
+            return out.show();
+        } catch (Exception e){
+            return "Błąd wykonania funkcji show()";
+        }
     }
 }
