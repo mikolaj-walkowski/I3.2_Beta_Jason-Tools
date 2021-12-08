@@ -1,5 +1,6 @@
 package pl.put.poznan.tools.rest;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +24,7 @@ public class JsonToolsController {
      * @return String zawierający wynikowy Json
      */
     @GetMapping("/filterOut/{text}")
-    public String filterOut(@PathVariable String text, @RequestParam(value = "filters", defaultValue = "") String[] filters, @RequestParam(value = "format", defaultValue = "beautiful") String format) {
+    public String filterOut(@PathVariable String text, @RequestParam(value = "filters", defaultValue = "") String[] filters, @RequestParam(value = "format", defaultValue = "beautiful") String format) throws JsonProcessingException {
         // log the parameters
         //logger.debug(text);
         //logger.debug(Arrays.toString(transforms));
@@ -47,7 +48,7 @@ public class JsonToolsController {
      * @return String zawierający wynikowy Json
      */
     @GetMapping("/oneLine/{text}")
-    public String filterOut(@PathVariable String text) {
+    public String filterOut(@PathVariable String text) throws JsonProcessingException {
         // log the parameters
         //logger.debug(text);
         //logger.debug(Arrays.toString(transforms));
@@ -64,11 +65,11 @@ public class JsonToolsController {
      * @return          String z zawartością wynikowego pliku Json
      */
     @GetMapping("/filter/{text}")
-    public String filter(@PathVariable String text, @RequestParam(value = "filters", defaultValue = "") String[] filters, @RequestParam(value = "format", defaultValue = "beautiful") String format) {
+    public String filter(@PathVariable String text, @RequestParam(value = "filters", defaultValue = "") String[] filters, @RequestParam(value = "format", defaultValue = "beautiful") String format) throws JsonProcessingException {
         // log the parameters
         //logger.debug(text);
         //logger.debug(Arrays.toString(transforms));
-        JsonInterpreter out;
+        JsonInterpreter out = null;
         try {
             if (Objects.equals(format, "beautiful")) {
                 out = new JsonBeautiful(text);
@@ -89,7 +90,7 @@ public class JsonToolsController {
      * @return          String z zawartością wynikowego pliku Json
      */
     @GetMapping("/beautiful/{text}")
-    public String beautiful(@PathVariable String text) {
+    public String beautiful(@PathVariable String text) throws JsonProcessingException {
         // log the parameters
         //logger.debug(text);
         //logger.debug(Arrays.toString(transforms));
