@@ -9,8 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  */
 public class JsonBeautiful extends JsonInterpreter {
 
-    private JsonNode obj;
-    private ObjectMapper mapper;
+//    private JsonNode obj;
 
     /**
      * Konstruktor.
@@ -27,6 +26,6 @@ public class JsonBeautiful extends JsonInterpreter {
      */
     @Override
     public String show() throws JsonProcessingException {
-        return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(obj);
+        return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(getJsonNode());
     }
 }
