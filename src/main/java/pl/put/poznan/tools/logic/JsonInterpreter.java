@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public abstract class JsonInterpreter {
 
     private JsonNode obj;
-    private ObjectMapper mapper;
+    public ObjectMapper mapper;
 
     public JsonInterpreter(){}
     public JsonInterpreter(String json){
