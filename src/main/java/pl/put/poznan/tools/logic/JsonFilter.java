@@ -1,6 +1,5 @@
 package pl.put.poznan.tools.logic;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
@@ -46,7 +45,7 @@ public class JsonFilter extends JsonInterpreter {
     /**
      * Funkcja do wyświetalnia JSONa
      * @return String zawierający wynikowy JSON
-     * @throws JsonProcessingException wyjątek
+     * @throws JsonProcessingException wyjątek zgłaszany przy błędnej obsłudze JSONa
      */
     @Override
     public String show() throws JsonProcessingException {

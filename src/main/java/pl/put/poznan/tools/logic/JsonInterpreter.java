@@ -11,7 +11,13 @@ public abstract class JsonInterpreter {
     private JsonNode obj;
     public ObjectMapper mapper;
 
+
     public JsonInterpreter(){}
+
+    /**
+     * Konstruktor parsujący dane w formacie JSON ze Stringa na JsonNode'a
+     * @param json String zawierający JSON
+     */
     public JsonInterpreter(String json){
         try {
             this.mapper = new ObjectMapper();
@@ -21,13 +27,27 @@ public abstract class JsonInterpreter {
         }
     }
 
+    /**
+     * Funkcja zwracająca JsonNode'a
+     * @return JsonNode
+     */
     public JsonNode getJsonNode(){
         return obj;
     }
+
+    /**
+     * Funkcja ustawiająca JsonNode'a
+     * @param obj JsonNode
+     */
     public void setJsonNode(JsonNode obj){
         this.obj = obj;
     }
 
+    /**
+     * Funkcja zwracająca wyniki wykonań danych klas (nadpisywana przez dane klasy)
+     * @return String zawierający wynikowy JSON
+     * @throws JsonProcessingException wyjątek zgłaszany przy błędnej obsłudze JSONa
+     */
     abstract public String show() throws JsonProcessingException;
 
 }
