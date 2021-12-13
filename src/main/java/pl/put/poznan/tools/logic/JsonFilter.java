@@ -12,13 +12,19 @@ import java.util.Iterator;
  */
 public class JsonFilter extends JsonInterpreter {
 
+    /**
+     * Filtrowany objekt.
+     */
     private JsonInterpreter obj;
+    /**
+     * Tablica string-ów zawierająca filtry.
+     */
     private String[] filters;
 
     /**
      * Konstruktor
      * @param obj Filtrowany objekt.
-     * @param filters Tablica string-ów zawierająca filtry
+     * @param filters Tablica string-ów zawierająca filtry.
      */
     public JsonFilter(JsonInterpreter obj, String[] filters) {
         this.obj = obj;
