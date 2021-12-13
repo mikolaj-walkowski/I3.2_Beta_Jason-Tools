@@ -90,8 +90,8 @@ public class JsonToolsController {
 
     /**
      * Funkcja do obsługi żądania przeformatowania Jsona na Json w wersji niezminifikowanej
-     * @param text      String stanowiący zawartość wejściowego pliku Json
-     * @return          String z zawartością wynikowego pliku Json
+     * @param text String stanowiący zawartość wejściowego pliku Json
+     * @return String z zawartością wynikowego pliku Json
      */
     @GetMapping("/beautiful/{text}")
     public String beautiful(@PathVariable String text) {
@@ -104,5 +104,20 @@ public class JsonToolsController {
         } catch (Exception e){
             return "Błąd wykonania funkcji show()";
         }
+    }
+
+    /**
+     * Funkcja do obsługi żądania porównywania 2 tekstów.
+     * @param s1 Pierwszy tekst
+     * @param s2 Drugi tekst
+     * @return Niezgodne line z obu tekstów i ich numer
+     */
+    @GetMapping("/stringCompare")
+    public String stringCompare( @RequestParam(value = "s1", defaultValue = "") String s1, @RequestParam(value = "s2", defaultValue = "") String s2) {
+        // log the parameters
+        //logger.debug(text);
+        //logger.debug(Arrays.toString(transforms));
+        StringCompare stringCompare = new StringCompare(s1, s2);
+        return stringCompare.show();
     }
 }
