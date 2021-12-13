@@ -105,4 +105,19 @@ public class JsonToolsController {
             return "Błąd wykonania funkcji show()";
         }
     }
+
+    /**
+     * Funkcja do obsługi żądania porównywania 2 tekstów.
+     * @param s1 Pierwszy tekst
+     * @param s2 Drugi tekst
+     * @return Niezgodne line z obu tekstów i ich numer
+     */
+    @GetMapping("/stringCompare")
+    public String stringCompare( @RequestParam(value = "s1", defaultValue = "") String s1, @RequestParam(value = "s2", defaultValue = "") String s2) {
+        // log the parameters
+        //logger.debug(text);
+        //logger.debug(Arrays.toString(transforms));
+        StringCompare stringCompare = new StringCompare(s1, s2);
+        return stringCompare.show();
+    }
 }
