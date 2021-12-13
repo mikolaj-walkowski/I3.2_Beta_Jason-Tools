@@ -2,6 +2,7 @@ package pl.put.poznan.tools.logic;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 
 import java.util.Iterator;
 
@@ -29,15 +30,16 @@ public class JsonFilter extends JsonInterpreter {
      * @param node JSON node
      */
     public void filter(JsonNode node){
-        Iterator<JsonNode> nodes = node.elements();
-        while(nodes.hasNext()){
-            for (String attribute : filters) {
-                if (nodes.next().textValue().equals(attribute)) {
-                    continue;
+        for(JsonNode root : node){
+            Iterator<String> itr2 = root.fieldNames();
+            while(itr2.hasNext()){
+                String help = itr2.next();
+                for(String attribute : filters){
+                    if(!help.equals(attribute)){
+                        itr2.remove();
+                    }
                 }
-                else {
-                    nodes.remove();
-                }
+                filter(root);
             }
         }
     }
