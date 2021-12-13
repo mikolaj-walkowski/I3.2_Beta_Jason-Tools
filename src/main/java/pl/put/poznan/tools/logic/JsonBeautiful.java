@@ -7,8 +7,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
  */
 public class JsonBeautiful extends JsonInterpreter {
 
-//    private JsonNode obj;
-
     /**
      * Konstruktor.
      * @param json String zawierający JSONa.

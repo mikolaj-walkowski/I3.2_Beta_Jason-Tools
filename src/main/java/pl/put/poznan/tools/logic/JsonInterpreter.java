@@ -8,10 +8,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  */
 public abstract class JsonInterpreter {
 
+    /**
+     * Odczytany JSON.
+     */
     private JsonNode obj;
+    /**
+     * Mapper do odczytywania JSONów.
+     */
     public ObjectMapper mapper;
 
 
+    /**
+     * Pusty konstruktor do nadpisania przez klasy JsonFilter i JsonFilterOut.
+     */
     public JsonInterpreter(){}
 
     /**
