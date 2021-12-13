@@ -90,8 +90,8 @@ public class JsonToolsController {
 
     /**
      * Funkcja do obsługi żądania przeformatowania Jsona na Json w wersji niezminifikowanej
-     * @param text      String stanowiący zawartość wejściowego pliku Json
-     * @return          String z zawartością wynikowego pliku Json
+     * @param text String stanowiący zawartość wejściowego pliku Json
+     * @return String z zawartością wynikowego pliku Json
      */
     @GetMapping("/beautiful/{text}")
     public String beautiful(@PathVariable String text) {

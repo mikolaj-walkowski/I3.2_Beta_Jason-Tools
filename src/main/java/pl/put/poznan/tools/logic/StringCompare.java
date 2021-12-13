@@ -7,23 +7,18 @@ public class StringCompare {
 
     String[] s1Split;
     String[] s2Split;
+    String result = "";
 
     /**
      * Przyjmuje dwa stringi i przetwarza je na tablice na podstawie newline
-     * @param s1
-     * @param s2
+     * po czym tworzy dla nich wynik.
+     * @param s1 pierwszy tekst
+     * @param s2 drugi tekst
      */
     public StringCompare(String s1, String s2) {
         s1Split = s1.split("\\n");
         s2Split = s2.split("\\n");
-    }
 
-    /**
-     * Porównuje dwie tablice ze sobą
-     * @return string z różniącymi się linami i ich numerami.
-     */
-    public String show(){
-        String result = "";
         for(int i =0; i< s1Split.length || i< s2Split.length ; i++){
             if(i>=s1Split.length) {
                 result += "###KONIEC###\t!=\t" + s2Split[i] + "\tline: " + (i+1) + "\n";
@@ -37,6 +32,13 @@ public class StringCompare {
                 result += s1Split[i] + "\t!=\t" + s2Split[i] + "\tline: " + (i+1) + "\n";
             }
         }
+    }
+
+    /**
+     * Zwraca wynik
+     * @return string z różniącymi się linami i ich numerami.
+     */
+    public String show(){
         return result;
     }
 }
