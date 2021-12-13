@@ -37,6 +37,7 @@ public class JsonFilterOut extends JsonInterpreter{
                         itr.remove();
                     }
                 }
+                filterOut(root);
             }
         }
     }

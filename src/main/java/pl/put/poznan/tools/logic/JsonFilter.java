@@ -27,25 +27,19 @@ public class JsonFilter extends JsonInterpreter {
 
     /**
      * Funkcja filtruje własności
-     * @param currentNode JSON node
+     * @param node JSON node
      */
-    public void filter(JsonNode currentNode){
-        if (currentNode.isArray()) {
-            ArrayNode arrayNode = (ArrayNode) currentNode;
-            Iterator<JsonNode> node = arrayNode.elements();
-            while (node.hasNext()) {
-                filter(node.next());
-            }
-        }
-        else if (currentNode.isObject()) {
-            Iterator<String> itr = currentNode.fieldNames();
-            while(itr.hasNext()){
-                String help = itr.next();
+    public void filter(JsonNode node){
+        for(JsonNode root : node){
+            Iterator<String> itr2 = root.fieldNames();
+            while(itr2.hasNext()){
+                String help = itr2.next();
                 for(String attribute : filters){
                     if(!help.equals(attribute)){
-                        itr.remove();
+                        itr2.remove();
                     }
                 }
+                filter(root);
             }
         }
     }
