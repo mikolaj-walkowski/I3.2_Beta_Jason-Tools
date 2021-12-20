@@ -18,7 +18,7 @@ public class JsonFilterOut extends JsonInterpreter{
         while(itr.hasNext()){
             String help = itr.next();
             for(String attribute : attributes){
-                if(!help.equals(attribute)){
+                if(help.equals(attribute)){
                     itr.remove();
                 }
             }
