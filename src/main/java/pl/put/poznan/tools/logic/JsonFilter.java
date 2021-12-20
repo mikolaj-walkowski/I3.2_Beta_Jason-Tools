@@ -31,6 +31,10 @@ public class JsonFilter extends JsonInterpreter {
         this.filters = filters;
     }
 
+    /**
+     * Funkcja filtruje własności na pierwszym poziomie
+     * @param node JSON node
+     */
     public void filterInitial(JsonNode node){
         Iterator<String> itr = node.fieldNames();
         while(itr.hasNext()){
