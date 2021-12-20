@@ -5,3 +5,4 @@ pl\put\poznan\tools\rest\JsonToolsController.class
 pl\put\poznan\tools\logic\JsonInterpreter.class
 pl\put\poznan\tools\logic\JsonBeautiful.class
 pl\put\poznan\tools\logic\JsonFilter.class
+pl\put\poznan\tools\logic\StringCompare.class
