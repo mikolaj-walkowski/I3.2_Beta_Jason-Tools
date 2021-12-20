@@ -31,6 +31,18 @@ public class JsonFilter extends JsonInterpreter {
         this.filters = filters;
     }
 
+    public void filterInitial(JsonNode node){
+        Iterator<String> itr = node.fieldNames();
+        while(itr.hasNext()){
+            String help = itr.next();
+            for(String attribute : filters){
+                if(!help.equals(attribute)){
+                    itr.remove();
+                }
+            }
+        }
+    }
+
     /**
      * Funkcja filtruje własności
      * @param node JSON node
@@ -57,6 +69,7 @@ public class JsonFilter extends JsonInterpreter {
      */
     @Override
     public String show() throws JsonProcessingException {
+        filterInitial(obj.getJsonNode());
         filter(obj.getJsonNode());
         return obj.show();
     }

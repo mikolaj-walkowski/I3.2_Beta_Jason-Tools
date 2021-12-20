@@ -13,6 +13,18 @@ public class JsonFilterOut extends JsonInterpreter{
     private JsonInterpreter obj;
     private String[] attributes;
 
+    public void filterOutInitial(JsonNode node){
+        Iterator<String> itr = node.fieldNames();
+        while(itr.hasNext()){
+            String help = itr.next();
+            for(String attribute : attributes){
+                if(!help.equals(attribute)){
+                    itr.remove();
+                }
+            }
+        }
+    }
+
     /**
      * Konstruktor
      * @param obj Filtrowany objekt.
@@ -49,6 +61,7 @@ public class JsonFilterOut extends JsonInterpreter{
      */
     @Override
     public String show() throws JsonProcessingException {
+        filterOutInitial(obj.getJsonNode());
         filterOut(obj.getJsonNode());
         return obj.show();
     }
