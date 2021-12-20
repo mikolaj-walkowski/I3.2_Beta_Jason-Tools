@@ -12,14 +12,12 @@
     </parent>
 
     <groupId>pl.put.poznan</groupId>
-    <artifactId>io-project-architecture</artifactId>
-    <version>0.1</version>
+    <artifactId>JSON-Tools</artifactId>
+    <version>1.0</version>
 
     <properties>
         <java.version>11</java.version>
         <jackson.version>2.12.4</jackson.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <artifactId.version>1.0</artifactId.version>
     </properties>
 
 
