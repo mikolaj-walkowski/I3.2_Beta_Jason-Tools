@@ -13,6 +13,20 @@ public class JsonFilterOut extends JsonInterpreter{
     private JsonInterpreter obj;
     private String[] attributes;
 
+    /**
+     * Konstruktor
+     * @param obj Filtrowany objekt.
+     * @param attributes Tablica string-ów zawierająca filtry
+     */
+    public JsonFilterOut(JsonInterpreter obj, String[] attributes) {
+        this.obj = obj;
+        this.attributes = attributes;
+    }
+    
+    /**
+     * Funkcja filtrująca własności na pierwszym poziomie
+     * @param node JSON node
+     */
     public void filterOutInitial(JsonNode node){
         Iterator<String> itr = node.fieldNames();
         while(itr.hasNext()){
@@ -23,16 +37,6 @@ public class JsonFilterOut extends JsonInterpreter{
                 }
             }
         }
-    }
-
-    /**
-     * Konstruktor
-     * @param obj Filtrowany objekt.
-     * @param attributes Tablica string-ów zawierająca filtry
-     */
-    public JsonFilterOut(JsonInterpreter obj, String[] attributes) {
-        this.obj = obj;
-        this.attributes = attributes;
     }
 
     /**
