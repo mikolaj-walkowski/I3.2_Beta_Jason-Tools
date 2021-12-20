@@ -24,7 +24,7 @@ public class JsonToolsController {
      * @return String zawierający wynikowy Json
      */
     @GetMapping("/filterOut/{text}")
-    public String filterOut(@PathVariable String text, @RequestParam(value = "filters", defaultValue = "") String[] filters, @RequestParam(value = "format", defaultValue = "beautiful") String format) throws JsonProcessingException {
+    public String filterOut(@PathVariable String text, @RequestParam(value = "filters", defaultValue = "") String[] filters, @RequestParam(value = "format", defaultValue = "beautiful") String format){
         // log the parameters
         //logger.debug(text);
         //logger.debug(Arrays.toString(transforms));
@@ -38,8 +38,12 @@ public class JsonToolsController {
         } catch (Exception e) {
             return "Nieobsługiwany format";
         }
-        out = new JsonFilterOut(out, filters);
-        return out.show();
+        try {
+            out = new JsonFilterOut(out, filters);
+            return out.show();
+        }catch (Exception e){
+            return "Błąd wykonania funkcji show";
+        }
     }
 
     /**
@@ -48,12 +52,16 @@ public class JsonToolsController {
      * @return String zawierający wynikowy Json
      */
     @GetMapping("/oneLine/{text}")
-    public String filterOut(@PathVariable String text) throws JsonProcessingException {
+    public String oneLine(@PathVariable String text) {
         // log the parameters
         //logger.debug(text);
         //logger.debug(Arrays.toString(transforms));
-        JsonInterpreter out = new JsonOneLine(text);
-        return out.show();
+        try {
+            JsonInterpreter out = new JsonOneLine(text);
+            return out.show();
+        }catch (Exception e){
+            return  "Błąd wykonania funkcji show";
+        }
     }
 
     /**
