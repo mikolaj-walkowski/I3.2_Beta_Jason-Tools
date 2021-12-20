@@ -35,7 +35,9 @@ public class JsonToolsController {
             } else if (Objects.equals(format, "oneLine")) {
                 out = new JsonOneLine(text);
             } else throw new Exception();
-        } catch (Exception e) {
+        } catch(JsonProcessingException e){
+            return  "Niepoprawny json";
+        }catch (Exception e) {
             return "Nieobsługiwany format";
         }
         try {
@@ -59,8 +61,10 @@ public class JsonToolsController {
         try {
             JsonInterpreter out = new JsonOneLine(text);
             return out.show();
+        }catch (JsonProcessingException e){
+            return  "Niepoprawny json";
         }catch (Exception e){
-            return  "Błąd wykonania funkcji show";
+            return "Błąd wykonania funkcji show()";
         }
     }
 
@@ -84,7 +88,10 @@ public class JsonToolsController {
             } else if (Objects.equals(format, "oneLine")) {
                 out = new JsonOneLine(text);
             } else throw new Exception();
-        } catch (Exception e) {
+        }catch(JsonProcessingException e){
+            return  "Niepoprawny json";
+        }
+        catch (Exception e) {
             return "Nieobsługiwany format";
         }
 
@@ -109,7 +116,9 @@ public class JsonToolsController {
         JsonInterpreter out = new JsonBeautiful(text);
         try {
             return out.show();
-        } catch (Exception e){
+        } catch(JsonProcessingException e){
+            return  "Niepoprawny json";
+        }catch (Exception e){
             return "Błąd wykonania funkcji show()";
         }
     }
