@@ -22,6 +22,7 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
         cache: maven
+    - run: cd RestApi
     - run: mvn --batch-mode --update-snapshots verify
     - run: mvn javadoc:javadoc
     - run: mkdir staging && cp target/*.jar staging && cp -r target/site/apidocs staging
