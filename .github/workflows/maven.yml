@@ -22,10 +22,9 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
         cache: maven
-    - run: cd RestApi
-    - run: mvn --batch-mode --update-snapshots verify
-    - run: mvn javadoc:javadoc
-    - run: mkdir staging && cp target/*.jar staging && cp -r target/site/apidocs staging
+    - run: mvn -f RestApi/ --batch-mode --update-snapshots verify
+    - run: mvn -f RestApi/ javadoc:javadoc
+    - run: mkdir staging && cp RestApi/target/*.jar staging && cp -r RestApi/target/site/apidocs staging
     - uses: actions/upload-artifact@v2
       with:
         name: Package
