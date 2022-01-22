@@ -113,7 +113,12 @@ public class JsonToolsController {
         // log the parameters
         //logger.debug(text);
         //logger.debug(Arrays.toString(transforms));
-        JsonInterpreter out = new JsonBeautiful(text);
+        JsonInterpreter out = null;
+        try {
+            out = new JsonBeautiful(text);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
         try {
             return out.show();
         } catch(JsonProcessingException e){

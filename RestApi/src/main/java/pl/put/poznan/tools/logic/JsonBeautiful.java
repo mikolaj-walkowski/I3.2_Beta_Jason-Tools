@@ -11,7 +11,7 @@ public class JsonBeautiful extends JsonInterpreter {
      * Konstruktor.
      * @param json String zawierający JSONa.
      */
-    public JsonBeautiful(String json) {
+    public JsonBeautiful(String json) throws JsonProcessingException {
         super(json);
     }
 

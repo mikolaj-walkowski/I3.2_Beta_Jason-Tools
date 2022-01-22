@@ -27,13 +27,9 @@ public abstract class JsonInterpreter {
      * Konstruktor parsujący dane w formacie JSON ze Stringa na JsonNode'a
      * @param json String zawierający JSON
      */
-    public JsonInterpreter(String json){
-        try {
+    public JsonInterpreter(String json) throws JsonProcessingException {
             this.mapper = new ObjectMapper();
             this.obj = mapper.readTree(json);
-        }catch (JsonProcessingException e){
-            System.out.println(e);
-        }
     }
 
     /**
