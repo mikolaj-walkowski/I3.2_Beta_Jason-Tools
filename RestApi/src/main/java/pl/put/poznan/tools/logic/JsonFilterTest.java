@@ -58,24 +58,19 @@ class JsonFilterTest {
     void testShow3() throws JsonProcessingException{
         String[] arr = {};
         json = new JsonFilter(mockBeautiful,arr);
-        assertEquals(json.show().replace("\r",""),
-                "{\n" +
-                "  \"osoba1\" : {\n" +
-                "    \"imie\" : \"Michał\",\n" +
-                "    \"wiek\" : 420\n" +
-                "  },\n" +
-                "  \"osoba2\" : {\n" +
-                "    \"imie\" : \"Nie Michał\",\n" +
-                "    \"wiek\" : 420\n" +
-                "  }\n" +
-                "}");
+        assertEquals(json.show().replace("\r",""), "{ }");
     }
 
     @Test
-    void testShow4() {
+    void testShow4() throws JsonProcessingException {
         String[] arr = {"osoba1","imie"};
         json = new JsonFilter(mockBeautiful,arr);
-        assertThrows(IllegalStateException.class,()->{json.show();});
+        assertEquals(json.show().replace("\r",""),
+                "{\n" +
+                        "  \"osoba1\" : {\n" +
+                        "    \"imie\" : \"Michał\"\n" +
+                        "  }\n" +
+                        "}");
     }
 
     @Test
