@@ -5,23 +5,31 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class JsonFilterTest {
     JsonFilter json = null;
     JsonBeautiful mockBeautiful = mock(JsonBeautiful.class);
     String jsonString  = "{\"osoba1\":{\"imie\":\"Michał\",\"wiek\":420},\"osoba2\":{\"imie\":\"Nie Michał\",\"wiek\":420}}";
-    JsonFilterTest() throws JsonProcessingException {
+    JsonFilterTest(){
     }
 
     @BeforeEach
     void setup(){
         try {
-            when(mockBeautiful.getJsonNode()).thenReturn(new ObjectMapper().readTree(jsonString));
-            when(mockBeautiful.show()).thenReturn("");
+            ObjectMapper map = new ObjectMapper();
+            JsonNode node = map.readTree(jsonString);
+            when(mockBeautiful.getJsonNode()).thenReturn(node);
+            when(mockBeautiful.show()).thenAnswer(new Answer<String>() {
+                @Override
+                public String answer(InvocationOnMock invocationOnMock) throws Throwable {
+                    return map.writerWithDefaultPrettyPrinter().writeValueAsString(node);
+                }
+            });
         }catch (Exception e){
             e.printStackTrace();
         }
