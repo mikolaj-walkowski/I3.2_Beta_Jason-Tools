@@ -25,7 +25,7 @@ jobs:
     - run: mkdir staging
     - run: mvn -f JSON_tools_client/ --batch-mode --update-snapshots verify
     #- run: mvn -f JSON_tools_client/ javadoc:javadoc
-    - run: mkdir staging/JSON_tools_client && cp JSON_tools_client/target/*.jar staging/JSON_tools_client && cp -r JSON_tools_client/target/site/apidocs staging/JSON_tools_client
+    - run: mkdir staging/JSON_tools_client && cp JSON_tools_client/target/*.jar staging/JSON_tools_client #&& cp -r JSON_tools_client/target/site/apidocs staging/JSON_tools_client
     - run: mvn -f RestApi/ --batch-mode --update-snapshots verify
     - run: mvn -f RestApi/ javadoc:javadoc
     - run: mkdir staging/RestApi && cp RestApi/target/*.jar staging/RestApi && cp -r RestApi/target/site/apidocs staging/RestApi
